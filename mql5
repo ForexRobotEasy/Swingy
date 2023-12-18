@@ -1,0 +1,40 @@
+
+// Program: Swingy Forex Software
+// Developer: Forex Robot Easy Team
+// Developer's Site: forexroboteasy.com
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+// Function to calculate lotsize based on historical maximum drawdown (DD)
+double calculateLotsize(double maxDrawdown) {
+    // Lotsize calculation logic here based on historical data
+    double lotsize = 0.01 * maxDrawdown; // Example calculation, adjust as per requirements
+    return lotsize;
+}
+
+// Function to execute a trade with specified lotsize, TP, and SL
+void executeTrade(const std::string& currencyPair, double lotsize, double takeProfit, double stopLoss) {
+    // Trade execution logic here
+    std::cout << 'Executing trade for ' << currencyPair << ' with lotsize: ' << lotsize << ', TP: ' << takeProfit << ', SL: ' << stopLoss << std::endl;
+    // Additional trade execution steps...
+}
+
+int main() {
+    // Initialize historical maximum drawdown (DD) for each currency pair
+    std::vector<double> maxDrawdowns = {0.05, 0.03, 0.07, 0.02, 0.06, 0.04, 0.08, 0.01, 0.03, 0.05, 0.02, 0.04};
+
+    // Set TP and SL values for each currency pair
+    std::vector<double> takeProfits = {50, 30, 70, 20, 60, 40, 80, 10, 30, 50, 20, 40};
+    std::vector<double> stopLosses = {20, 15, 25, 18, 22, 16, 28, 12, 14, 18, 15, 20};
+
+    // Iterate over currency pairs and execute trades
+    std::vector<std::string> currencyPairs = {'EURUSD', 'GBPUSD', 'USDJPY', 'AUDUSD', 'USDCHF', 'NZDUSD', 'USDCAD', 'EURGBP', 'GBPJPY', 'AUDJPY', 'EURJPY', 'CADJPY'};
+    for (int i = 0; i < currencyPairs.size(); ++i) {
+        double lotsize = calculateLotsize(maxDrawdowns[i]);
+        executeTrade(currencyPairs[i], lotsize, takeProfits[i], stopLosses[i]);
+    }
+
+    return 0;
+}
